@@ -146,7 +146,7 @@ module.exports = {
       // 给 sass-loader 传递 sass.js 相关选项
       scss: {
         // `prependData` 定义全局对象，可加入变量样式表
-        prependData: `@import "~@/assets/styles/variables.scss";@import "~@/assets/styles/common.scss";`,
+        prependData: `@import "~@/assets/styles/common.scss";`,
       },
     },
   },
