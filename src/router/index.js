@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
+import Card from '../views/Card.vue';
 import StatusError from '@/views/Error';
 
 Vue.use(VueRouter);
@@ -24,6 +25,11 @@ const routes = [
     path: '/:mobile', // 首页
     name: 'Contact',
     component: Home,
+  },
+  {
+    path: '/:mobile/card', // 名片页
+    name: 'Card',
+    component: Card,
   },
   {
     path: '/StatusError', // 状态错误页面
