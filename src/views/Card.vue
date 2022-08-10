@@ -52,7 +52,7 @@
 
 <script>
 export default {
-  name: 'Home',
+  name: 'Card',
   components: {},
   data() {
     return {
@@ -107,7 +107,8 @@ export default {
   font-size: 16px;
   font-family: PingFangSC-Regular, sans-serif;
   color: #222222;
-  background: #f4f6f8;
+  // background: #f4f6f8;
+  background: #ffffff;
   box-sizing: border-box;
 }
 // 顶部导航
@@ -117,8 +118,8 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding-left: 20px;
-  height: 54px;
-  background: #f4f6f8;
+  height: 4.4rem;
+  // background: #f4f6f8;
   box-shadow: 0 0 3px 0 rgb(0 0 0 / 5%);
   .logo {
     display: inline-block;
@@ -132,8 +133,8 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 56px;
-    height: 54px;
+    width: 5.6rem;
+    height: 4.4rem;
     font-size: 10px;
     text-decoration: unset;
     color: #222222;
@@ -155,7 +156,6 @@ export default {
   position: relative;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
   border-radius: 16px;
   padding: 1rem;
   width: 100%;
@@ -276,7 +276,7 @@ export default {
   .app-list {
     padding: 12px;
     width: 100%;
-    background: #f4f6f8;
+    // background: #f4f6f8;
     flex-wrap: wrap;
     box-sizing: border-box;
     @include flex-common();
@@ -288,6 +288,7 @@ export default {
       box-sizing: border-box;
       @include flex-common();
       .content-wrap {
+        border: 1px solid #b9bfc4;
         border-radius: 17px;
         padding: 14px 16px;
         width: 100%;
