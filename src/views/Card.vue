@@ -24,11 +24,14 @@
       </div>
     </div>
     <div class="contact-body">
-      <!-- <div class="tab-list">
-        <div class="tab-item" :class="item.action" v-for="item in tabs" :key="item.action">
-          <span class="text">{{ item.name }}</span>
+      <template v-if="isUpdate">
+        <div class="tab-list">
+          <div class="tab-item" :class="item.action" v-for="item in tabs" :key="item.action">
+            <span class="text">{{ item.name }}</span>
+          </div>
         </div>
-      </div> -->
+        <van-icon name="add" class="add-icon" :color="'#00A870'" size="4rem" />
+      </template>
       <div class="app-list">
         <template v-if="apps.length">
           <a
@@ -51,9 +54,12 @@
 </template>
 
 <script>
+import {Icon} from 'vant';
 export default {
   name: 'Card',
-  components: {},
+  components: {
+    'van-icon': Icon,
+  },
   data() {
     return {
       tabs: [
@@ -64,10 +70,12 @@ export default {
       ],
       apps: [],
       mobile: '',
+      isUpdate: false,
     };
   },
   created() {
     const mobile = this.$route.params.mobile;
+    this.isUpdate = this.$route.query.isUpdate ? this.$route.query.isUpdate : false;
     if (mobile) {
       this.apps = [
         {
@@ -75,11 +83,11 @@ export default {
           name: '微信',
         },
         {
-          action: 'wechat',
+          action: 'wechat1',
           name: '微信',
         },
         {
-          action: 'wechat',
+          action: 'wechat2',
           name: '微信',
         },
       ];
@@ -236,10 +244,12 @@ export default {
 }
 // 联系内容
 .contact-body {
+  position: relative;
   .tab-list {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    margin-top: 1.2rem;
     padding: 0 20px;
     width: 100%;
     box-sizing: border-box;
@@ -273,8 +283,13 @@ export default {
       }
     }
   }
+  .add-icon {
+    position: absolute;
+    top: 0;
+    right: 20px;
+  }
   .app-list {
-    padding: 12px;
+    padding: 1.2rem;
     width: 100%;
     // background: #f4f6f8;
     flex-wrap: wrap;

@@ -30,27 +30,31 @@
           <div class="custom-indicator">{{ currentCard + 1 }}/4</div>
         </template>
       </van-swipe>
+      <div class="card-swipe-btn-wrap">
+        <div class="card-btn" @click="goEdit">编辑名片</div>
+        <div class="card-btn">转发名片</div>
+      </div>
     </div>
     <div class="search-wrapper">
       <p>我收藏的名片</p>
       <input type="text" class="search-input" placeholder="搜索备注" />
     </div>
     <div class="contact-body">
-      <div class="app-list">
+      <div class="card-list">
         <template v-if="apps.length">
           <a
-            class="app-item"
+            class="card-item"
             :class="item.action"
             v-for="item in apps"
             :key="item.action"
             @click="goto(item.action)"
           >
             <div class="content-wrap">
-              <p class="app-name">{{ item.name }}</p>
+              {{ item.name }}
             </div>
           </a>
         </template>
-        <div class="app-empty" v-else>TA还没有联系方式哟</div>
+        <div class="card-empty" v-else>TA还没有名片哟</div>
       </div>
     </div>
   </div>
@@ -87,15 +91,15 @@ export default {
       this.apps = [
         {
           action: 'wechat',
-          name: '微信',
+          name: '名片',
         },
         {
           action: 'wechat2',
-          name: '微信',
+          name: '名片2',
         },
         {
           action: 'wechat3',
-          name: '微信',
+          name: '名片3',
         },
       ];
       this.mobile = mobile;
@@ -104,6 +108,14 @@ export default {
   methods: {
     goto(action) {
       alert('go to -> ' + action + ':   ' + this.mobile);
+      this.$router.push('Card');
+    },
+    goEdit() {
+      this.$router.push({
+        name: 'Card',
+        query: {isUpdate: true},
+        params: {},
+      });
     },
     onSwipeChange(index) {
       this.currentCard = index;
@@ -205,6 +217,7 @@ export default {
 // 名片轮播
 .card-swipe {
   &-wrapper {
+    position: relative;
     margin-top: 1.2rem;
     padding: 0 1.2rem;
     width: 100%;
@@ -220,6 +233,15 @@ export default {
     background-size: cover;
     box-sizing: border-box;
     background-image: url(../assets/images/default_header_bg.png);
+  }
+  &-btn-wrap {
+    position: absolute;
+    right: 25px;
+    bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 23rem;
   }
 }
 .custom-indicator {
@@ -259,14 +281,14 @@ export default {
 }
 // 联系内容
 .contact-body {
-  .app-list {
+  .card-list {
     padding: 0 1.2rem;
     width: 100%;
     // background: #f4f6f8;
     flex-wrap: wrap;
     box-sizing: border-box;
     @include flex-common();
-    .app-item {
+    .card-item {
       position: relative;
       margin-bottom: 8px;
       border-radius: 8px;
@@ -283,6 +305,9 @@ export default {
         margin-left: 16px;
       }
       .content-wrap {
+        padding-top: 1.5rem;
+        width: 100%;
+        text-align: center;
         color: #ffffff;
         // padding: 14px 16px;
         // width: 100%;
@@ -290,7 +315,7 @@ export default {
         // @include flex-common();
       }
     }
-    .app-empty {
+    .card-empty {
       margin-top: 60px;
       width: 100%;
       font-size: 14px;
