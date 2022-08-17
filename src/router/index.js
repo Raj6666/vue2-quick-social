@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
 import Card from '../views/Card.vue';
+import ContactList from '../views/ContactList.vue';
 import StatusError from '@/views/Error';
 
 Vue.use(VueRouter);
@@ -30,6 +31,11 @@ const routes = [
     path: '/:mobile/card', // 名片页
     name: 'Card',
     component: Card,
+  },
+  {
+    path: '/:mobile/addContact', // 名片页
+    name: 'ContactList',
+    component: ContactList,
   },
   {
     path: '/StatusError', // 状态错误页面
